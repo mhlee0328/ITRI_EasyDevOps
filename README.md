@@ -28,4 +28,124 @@
 
    專案使用 PostgreSQL 作為可靠的資料庫，確保資料的儲存和管理是穩定且高效的。
 
-   
+
+
+
+# Usage
+
+PS D:\GitKraken\Github\mhlee0328\ITRI_EasyDevOps> tree /f
+列出資料夾 PATH
+磁碟區序號為 C8D8-9019
+D:.
+│  LICENSE
+│  README.md
+│
+├─DockerStack
+│  └─DockerCompose
+│      └─SonarQube-Dev-9.9LTS
+│          │  .env
+│          │  docker-compose.yml
+│          │
+│          └─ContainerVolume
+│              ├─jenkins
+│              │  └─jenkins_home
+│              ├─postgresql
+│              │  ├─postgresql
+│              │  │  └─data
+│              │  └─postgresql_data
+│              └─sonarqube
+│                  ├─sonarqube_data
+│                  ├─sonarqube_extensions
+│                  │  ├─downloads
+│                  │  └─plugins
+│                  │          sonar-cnes-report-4.2.0.jar
+│                  │
+│                  └─sonarqube_logs
+│
+└─YourScanFolder
+    └─YourAppProject
+            940115_RunSonarScanner-9.9LTS.ps1
+            YourAppProject.sln
+
+
+
+SonarQube-Dev-9.9LTS Run it on a Docker-enabled computer via: 
+
+```powershell
+PS D:DockerStack\DockerCompose\SonarQube-Dev-9.9LTS> docker-compose -f up 
+```
+
+Alternatively, you can run it in a Docker-enabled web application in the Cloud.
+
+
+
+
+
+# Implementation CI/CD DevOps with SonarQube and Jenkins
+
+Docker Desktop on Windows 為範例  SonarQube-Dev-9.9LTS 微服務
+
+![2023-07-27_153925](.\res\2023-07-27_153925.png)
+
+
+
+SonarQube http://localhost:9000
+
+![2023-07-27_154112](.\res\2023-07-27_154112.png)
+
+
+
+SonarQube 執行畫面示意圖
+
+![2023-07-27_154158](.\res\2023-07-27_154158.png)
+
+
+
+SonarQube 執行畫面示意圖
+
+![2023-07-27_154222](.\res\2023-07-27_154222.png)
+
+
+
+Jenkins  執行畫面示意圖
+
+![2023-07-27_154606](.\res\2023-07-27_154606.png)
+
+Jenkins  執行畫面示意圖
+
+![2023-07-27_154709](.\res\2023-07-27_154709.png)
+
+
+
+Community 版本  SonarScanner 自行各種程式語言會用到的CLI 命令
+
+![2023-07-27_162400](.\res\2023-07-27_162400.png)
+
+
+
+.net Framework 版本
+
+![2023-07-27_162339](.\res\2023-07-27_162339.png)
+
+
+
+.net Core版本
+
+![2023-07-27_162326](.\res\2023-07-27_162326.png)
+
+自動執行弱點掃瞄的腳本 !  注意這裡我寫的的 powershell 腳本範例適用於 " .net C# Core " 專案 
+
+實際上用戶必須根據自己的專案類型， 修改你的腳本命令 ! 
+
+YourScanFolder
+    └─YourAppProject
+            940115_RunSonarScanner-9.9LTS.ps1
+
+![2023-07-27_155935](.\res\2023-07-27_155935.png)
+
+
+
+YourScanFolder
+    └─YourAppProject 最後完成弱點修正後 , 可供下載 Report ! 
+
+![2023-07-27_160400](.\res\2023-07-27_160400.png)
