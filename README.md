@@ -9,6 +9,7 @@
    - SonarQube：程式碼靜態分析工具，幫助確保程式碼品質，發現潛在的程式碼問題。
    - Jenkins：流程自動化工具，用於建置、測試和部署程式碼。
    - PostgreSQL：強大的開源關聯式資料庫，用於儲存和管理專案所需的資料。
+   - SonarScanner : 要預先安裝 JDK11  https://learn.microsoft.com/zh-tw/java/openjdk/download#openjdk-11
 
 3. ### SonarQube ( image: sonarqube:9.9-community )
 
@@ -17,6 +18,8 @@
    LTS SONARQUBE_VERSION=9.9.1.69595 
 
    提供即時的程式碼品質反饋，確保開發團隊可以持續提供高品質的程式碼。
+
+   SonarScanner 負責本地端 source code 的 scan report ，再將 Report 上傳到 SonarQube的站台。 
 
 4. ### Jenkins ( image: jenkins/jenkins:lts )
 
