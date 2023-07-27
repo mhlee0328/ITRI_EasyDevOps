@@ -68,17 +68,94 @@ D:.
             YourAppProject.sln
 ```
 
-
-
 SonarQube-Dev-9.9LTS Run it on a Docker-enabled computer via: 
 
 ```powershell
-PS D:DockerStack\DockerCompose\SonarQube-Dev-9.9LTS> docker-compose -f up 
+PS D:\DockerStack\DockerCompose\SonarQube-Dev-9.9LTS> type docker-compose.yml
+
+version: '3.9'
+services:
+
+  jenkins:
+    container_name: itri-security-jenkins
+    hostname: jenkins
+    image: jenkins/jenkins:2.401.2-lts
+    #cpus: 2
+    #mem_limit: 4096M
+    #mem_reservation: 1024M
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./ContainerVolume/jenkins/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - sonar-network
+
+  
+  sonarqube:
+    container_name: itri-security-sonarqube
+    hostname: sonarqube
+    image: sonarqube:9.9-community
+    #cpus: 2
+    #mem_limit: 4096M
+    #mem_reservation: 1024M
+    depends_on:
+      - sonarqube-db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://sonarqube-db:5432/sonarqube
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+      SONAR_SEARCH_JAVAADDITIONALOPTS: "-Dnode.store.allow_mmap=false -Dbootstrap.system_call_filter=false"
+      # The following (commented out) setting is a workaround for the following error:
+      #
+      #     max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+      #     C:\Users\<Your-Username>\.wslconfig 請將 <Your-Username> 替換為您的 Windows 11 使用者名稱。
+      #     It is better to add the following to the file `%USERPROFILE%\.wslconfig` on Windows instead:
+      #
+      #     [wsl2]
+      #     kernelCommandLine="sysctl.vm.max_map_count=262144"
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: true
+    volumes:
+      - ./ContainerVolume/sonarqube/sonarqube_data:/opt/sonarqube/data
+      - ./ContainerVolume/sonarqube/sonarqube_logs:/opt/sonarqube/logs
+      - ./ContainerVolume/sonarqube/sonarqube_extensions:/opt/sonarqube/extensions
+    ports:
+      - 9001:9000
+    networks:
+      - sonar-network
+
+
+
+  sonarqube-db:
+    container_name: itri-security-postgres
+    hostname: sonarqube-pg
+    image: postgres:13
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonarqube
+    volumes:
+      - ./ContainerVolume/postgresql/postgresql:/var/lib/postgresql 
+      - ./ContainerVolume/postgresql/postgresql_data:/var/lib/postgresql/data
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    networks:
+      - sonar-network
+
+networks:
+  sonar-network:
+    driver: bridge
+
+
+PS D:\DockerStack\DockerCompose\SonarQube-Dev-9.9LTS> docker-compose -f up 
 ```
 
 Alternatively, you can run it in a Docker-enabled web application in the Cloud.
-
-
 
 
 
