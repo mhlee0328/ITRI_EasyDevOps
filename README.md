@@ -2,7 +2,7 @@
 
 1. ### 描述：
 
-   ITRI_EasyDevOps 專案的主要用於 CI/CD DevOps 的容器化工具集。容器化有助於方便部署和管理。目標是讓開發團隊能夠專注於開發本身，而不需花費過多時間處理""環境設置和部署的瑣碎事務""。透過容器化，我們致力於提供一個方便且快速的開發環境，讓 CICD DevOps 變得更加順暢。
+   ITRI_EasyDevOps 專案的主要用於 CI/CD DevOps 的容器化工具集。容器化有助於方便部署和管理。目標是讓開發團隊能夠專注於開發本身，而不需花費過多時間處理 "環境設置和部署的瑣碎事務"。透過容器化，我們致力於提供一個方便且快速的開發環境，並提供ContainerVolume 掛載讓 CICD DevOps 變得更加順暢。
 
 2. ### 功能：
 
@@ -23,7 +23,7 @@
 
 4. ### Jenkins ( image: jenkins/jenkins:lts )
 
-   image: jenkins/jenkins:lts 2.401.2
+   image: jenkins/jenkins:2.401.2-lts
 
    負責自動化整個 CI/CD 流程，從程式碼的建置、測試，到最終的部署都能自動處理。
 
@@ -153,12 +153,14 @@ services:
 networks:
   sonar-network:
     driver: bridge
-
-
-PS D:\DockerStack\DockerCompose\SonarQube-Dev-9.9LTS> docker-compose -f up 
 ```
 
 Alternatively, you can run it in a Docker-enabled web application in the Cloud.
+
+```powershell
+PS D:\DockerStack\DockerCompose\SonarQube-Dev-9.9LTS> docker-compose up
+PS D:\DockerStack\DockerCompose\SonarQube-Dev-9.9LTS> docker-compose down
+```
 
 
 
@@ -218,15 +220,19 @@ Community 版本  SonarScanner 自行各種程式語言會用到的CLI 命令
 
 實際上用戶必須根據自己的專案類型， 修改你的腳本命令 ! 
 
+```
 YourScanFolder
     └─YourAppProject
             940115_RunSonarScanner-9.9LTS.ps1
+```
 
 ![2023-07-27_155935](./res/2023-07-27_155935.png)
 
 
 
+```
 YourScanFolder
     └─YourAppProject 最後完成弱點修正後 , 可供下載 Report ! 
+```
 
 ![2023-07-27_160400](./res/2023-07-27_160400.png)

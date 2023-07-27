@@ -18,7 +18,7 @@ $token="sqp_9aab436148de78ab0a19db2a2a2318392de4d171"
 $projectName="YourAppProject"
 $projectSlnPath=".\YourAppProject.sln"
 $sonarUsername="admin"  # 將 "Your_SonarQube_Username" 改為您的 SonarQube 使用者帳號
-$sonarPassword="@02750963"  # 將 "Your_SonarQube_Password" 改為您的 SonarQube 使用者密碼
+$sonarPassword="admin"  # 將 "Your_SonarQube_Password" 改為您的 SonarQube 使用者密碼
 
 Write-Host "========開始進行 SonarScanner 程式碼掃描流程=========" -foregroundColor yellow
 Write-Host "當前執行路徑: "$TargetPath -foregroundColor blue
