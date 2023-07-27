@@ -33,9 +33,9 @@
 
 # Usage
 
+```powershell
 PS D:\GitKraken\Github\mhlee0328\ITRI_EasyDevOps> tree /f
-列出資料夾 PATH
-磁碟區序號為 C8D8-9019
+
 D:.
 │  LICENSE
 │  README.md
@@ -66,6 +66,7 @@ D:.
     └─YourAppProject
             940115_RunSonarScanner-9.9LTS.ps1
             YourAppProject.sln
+```
 
 
 
@@ -85,53 +86,53 @@ Alternatively, you can run it in a Docker-enabled web application in the Cloud.
 
 Docker Desktop on Windows 為範例  SonarQube-Dev-9.9LTS 微服務
 
-![2023-07-27_153925](.\res\2023-07-27_153925.png)
+![2023-07-27_153925](./res/2023-07-27_153925.png)
 
 
 
 SonarQube http://localhost:9000
 
-![2023-07-27_154112](.\res\2023-07-27_154112.png)
+![2023-07-27_154112](./res/2023-07-27_154112.png)
 
 
 
 SonarQube 執行畫面示意圖
 
-![2023-07-27_154158](.\res\2023-07-27_154158.png)
+![2023-07-27_154158](./res/2023-07-27_154158.png)
 
 
 
 SonarQube 執行畫面示意圖
 
-![2023-07-27_154222](.\res\2023-07-27_154222.png)
+![2023-07-27_154222](./res/2023-07-27_154222.png)
 
 
 
 Jenkins  執行畫面示意圖
 
-![2023-07-27_154606](.\res\2023-07-27_154606.png)
+![2023-07-27_154606](./res/2023-07-27_154606.png)
 
 Jenkins  執行畫面示意圖
 
-![2023-07-27_154709](.\res\2023-07-27_154709.png)
+![2023-07-27_154709](./res/2023-07-27_154709.png)
 
 
 
 Community 版本  SonarScanner 自行各種程式語言會用到的CLI 命令
 
-![2023-07-27_162400](.\res\2023-07-27_162400.png)
+![2023-07-27_162400](./res/2023-07-27_162400.png)
 
 
 
 .net Framework 版本
 
-![2023-07-27_162339](.\res\2023-07-27_162339.png)
+![2023-07-27_162339](./res/2023-07-27_162339.png)
 
 
 
 .net Core版本
 
-![2023-07-27_162326](.\res\2023-07-27_162326.png)
+![2023-07-27_162326](./res/2023-07-27_162326.png)
 
 自動執行弱點掃瞄的腳本 !  注意這裡我寫的的 powershell 腳本範例適用於 " .net C# Core " 專案 
 
@@ -141,11 +142,11 @@ YourScanFolder
     └─YourAppProject
             940115_RunSonarScanner-9.9LTS.ps1
 
-![2023-07-27_155935](.\res\2023-07-27_155935.png)
+![2023-07-27_155935](./res/2023-07-27_155935.png)
 
 
 
 YourScanFolder
     └─YourAppProject 最後完成弱點修正後 , 可供下載 Report ! 
 
-![2023-07-27_160400](.\res\2023-07-27_160400.png)
+![2023-07-27_160400](./res/2023-07-27_160400.png)
